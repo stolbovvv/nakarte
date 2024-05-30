@@ -140,10 +140,8 @@ strong {
 
 .button_dark:hover,
 .button_dark:active {
-	color: hsl(227deg, 100%, 67%);
-	color: var(--clr-accent-1);
-	background-color: hsl(0deg, 0%, 7%);
-	background-color: var(--clr-dark-3);
+	color: hsl(0deg, 0%, 100%);
+	color: var(--clr-light-1);
 }
 
 a.button_dark {
@@ -334,6 +332,7 @@ textarea {
 }
 
 .card {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -342,6 +341,20 @@ textarea {
 	border-radius: 1.25rem;
 	background-color: hsl(0deg, 0%, 9%);
 	background-color: var(--clr-dark-2);
+}
+
+.card::before {
+	content: "";
+	border-radius: inherit;
+	position: absolute;
+	top: -2px;
+	right: -2px;
+	bottom: -2px;
+	left: -2px;
+	z-index: -1;
+	background: conic-gradient(from 12turn, transparent 25%, hsl(227deg, 100%, 67%), 99%, transparent);
+	background: conic-gradient(from 12turn, transparent 25%, var(--clr-accent-1), 99%, transparent);
+	background-position: center center;
 }
 
 .card__img {
