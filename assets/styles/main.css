@@ -537,7 +537,7 @@ textarea {
 	-moz-column-gap: 1.25rem;
 	     column-gap: 1.25rem;
 	z-index: 1000;
-	transform: translateY(-0.3125rem);
+	transform: translateY(-0.2rem);
 }
 
 .header__logo-link {
