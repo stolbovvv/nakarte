@@ -132,8 +132,7 @@ strong {
 
 .button_dark:hover,
 .button_dark:active {
-	color: var(--clr-accent-1);
-	background-color: var(--clr-dark-3);
+	color: var(--clr-light-1);
 }
 
 a.button_dark {
@@ -304,6 +303,7 @@ textarea {
 }
 
 .card {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -311,6 +311,16 @@ textarea {
 	padding: clamp(1rem, 1.667vw + 0.667rem, 2rem);
 	border-radius: 1.25rem;
 	background-color: var(--clr-dark-2);
+}
+
+.card::before {
+	content: "";
+	border-radius: inherit;
+	position: absolute;
+	inset: -2px;
+	z-index: -1;
+	background: conic-gradient(from 12turn, transparent 25%, var(--clr-accent-1), 99%, transparent);
+	background-position: center center;
 }
 
 .card__img {
