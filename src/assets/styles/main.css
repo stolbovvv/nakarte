@@ -9,6 +9,7 @@
 	--clr-light-1: hsl(0deg, 0%, 100%);
 
 	--clr-accent-1: hsl(227deg, 100%, 67%);
+	--clr-accent-a1: hsla(227deg, 100%, 67%, 50%);
 	--clr-accent-2: hsl(227deg, 100%, 57%);
 	--clr-accent-3: hsl(227deg, 100%, 47%);
 }
@@ -311,6 +312,16 @@ textarea {
 	padding: clamp(1rem, 1.667vw + 0.667rem, 2rem);
 	border-radius: 1.25rem;
 	background-color: var(--clr-dark-2);
+	z-index: 10;
+}
+
+.card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	border-radius: inherit;
+	background-color: inherit;
+	z-index: -1;
 }
 
 .card::before {
@@ -318,7 +329,7 @@ textarea {
 	border-radius: inherit;
 	position: absolute;
 	inset: -2px;
-	z-index: -1;
+	z-index: -2;
 	background: conic-gradient(from 12turn, transparent 25%, var(--clr-accent-1), 99%, transparent);
 	background-position: center center;
 }
@@ -478,7 +489,7 @@ textarea {
 }
 
 .main__bg path:hover {
-	fill: var(--clr-accent-1);
+	fill: var(--clr-accent-a1);
 }
 
 .header {
