@@ -9,6 +9,7 @@
 	--clr-light-1: hsl(0deg, 0%, 100%);
 
 	--clr-accent-1: hsl(227deg, 100%, 67%);
+	--clr-accent-a1: hsla(227, 100%, 67%, 0.5);
 	--clr-accent-2: hsl(227deg, 100%, 57%);
 	--clr-accent-3: hsl(227deg, 100%, 47%);
 }
@@ -341,6 +342,19 @@ textarea {
 	border-radius: 1.25rem;
 	background-color: hsl(0deg, 0%, 9%);
 	background-color: var(--clr-dark-2);
+	z-index: 10;
+}
+
+.card::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border-radius: inherit;
+	background-color: inherit;
+	z-index: -1;
 }
 
 .card::before {
@@ -351,7 +365,7 @@ textarea {
 	right: -2px;
 	bottom: -2px;
 	left: -2px;
-	z-index: -1;
+	z-index: -2;
 	background: conic-gradient(from 12turn, transparent 25%, hsl(227deg, 100%, 67%), 99%, transparent);
 	background: conic-gradient(from 12turn, transparent 25%, var(--clr-accent-1), 99%, transparent);
 	background-position: center center;
@@ -521,8 +535,8 @@ textarea {
 }
 
 .main__bg path:hover {
-	fill: hsl(227deg, 100%, 67%);
-	fill: var(--clr-accent-1);
+	fill: hsla(227, 100%, 67%, 0.5);
+	fill: var(--clr-accent-a1);
 }
 
 .header {
