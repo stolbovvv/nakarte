@@ -507,12 +507,22 @@ textarea {
 
 .main__bg {
 	position: absolute;
-	z-index: -1;
+	z-index: 0;
 	top: 2rem;
 	left: 50%;
 	width: min(150%, 2895px);
 	transform: translateX(-50%);
 	max-width: none;
+}
+
+.main__bg path {
+	fill: #1c1c1c;
+	transition: all 0.4s ease 0s;
+}
+
+.main__bg path:hover {
+	fill: hsl(227deg, 100%, 67%);
+	fill: var(--clr-accent-1);
 }
 
 .header {
