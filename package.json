@@ -15,7 +15,7 @@
 		"lint": "npm run stylelint && npm run eslint",
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist",
-		"prepare": ""
+		"prepare": "husky"
 	},
 	"browserslist": [
 		">0.3%",
