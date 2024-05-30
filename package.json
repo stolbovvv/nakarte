@@ -1,0 +1,41 @@
+{
+	"name": "nakarte",
+	"version": "1.0.0",
+	"description": "Nakarte website.",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "npx gulp",
+		"clean": "npx gulp clean",
+		"build": "npm run lint && npx gulp build --production",
+		"preview": "npm run lint && npx gulp preview --production",
+		"archive": "npm run lint && npx gulp archive --production",
+		"stylelint": "npx stylelint ./src/**/*.css --fix",
+		"eslint": "npx eslint ./src/**/*.js --fix",
+		"lint": "npm run stylelint && npm run eslint",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist",
+		"prepare": ""
+	},
+	"browserslist": [
+		">0.3%",
+		"last 2 versions",
+		"Firefox ESR",
+		"not dead"
+	],
+	"author": {
+		"name": "Valerii Stolbov",
+		"email": "stolbov.v@outlook.com",
+		"url": "https://github.com/stolbovvv"
+	},
+	"devDependencies": {
+		"eslint": "^8.57.0",
+		"eslint-config-prettier": "^9.1.0",
+		"eslint-plugin-prettier": "^5.1.3",
+		"gh-pages": "^6.1.1",
+		"husky": "^9.0.11",
+		"prettier": "^3.2.5",
+		"stylelint": "^16.6.1",
+		"stylelint-config-standard": "^36.0.0"
+	}
+}

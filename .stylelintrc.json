@@ -1,0 +1,14 @@
+{
+	"extends": ["stylelint-config-standard"],
+
+	"rules": {
+		"block-no-empty": null,
+		"color-function-notation": "legacy",
+		"color-hex-length": "long",
+		"custom-property-empty-line-before": null,
+		"declaration-property-value-no-unknown": true,
+		"media-feature-range-notation": "context",
+		"no-empty-source": null,
+		"selector-class-pattern": null
+	}
+}
