@@ -9,7 +9,7 @@
 	--clr-light-1: hsl(0deg, 0%, 100%);
 
 	--clr-accent-1: hsl(227deg, 100%, 67%);
-	--clr-accent-a1: hsla(227, 100%, 67%, 0.5);
+	--clr-accent-a1: hsla(227, 100%, 67%, 0.8);
 	--clr-accent-2: hsl(227deg, 100%, 57%);
 	--clr-accent-3: hsl(227deg, 100%, 47%);
 }
@@ -535,7 +535,7 @@ textarea {
 }
 
 .main__bg path:hover {
-	fill: hsla(227, 100%, 67%, 0.5);
+	fill: hsla(227, 100%, 67%, 0.8);
 	fill: var(--clr-accent-a1);
 }
 
