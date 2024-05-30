@@ -32,15 +32,77 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			<!-- Page header content -->
+			<div class="header__container container">
+				<div class="header__logo">
+					<a class="header__logo-link" href="./"><img class="header__logo-icon" src="./assets/images/logo-nakarte.svg" alt="Nakarte"></a>
+				</div>
+				<nav class="header__menu js-menu">
+					<button class="header__menu-burger js-menu-trigger">
+						<span></span>
+						<span></span>
+					</button>
+					<div class="header__menu-body js-menu-wrapper">
+						<ul class="header__menu-nav-list">
+							<li><a class="header__menu-nav-link" href="./about.html">О компании</a></li>
+							<li><a class="header__menu-nav-link" href="./invest.html">Для инвесторов</a></li>
+							<li><a class="header__menu-nav-link" href="./">Для проектов</a></li>
+							<li><a class="header__menu-nav-link" href="./">Контакты</a></li>
+						</ul>
+						<div class="header__menu-footer">
+							<ul class="header__menu-social-list">
+								<li><a class="header__menu-social-link" href="./"><img src="./assets/icons/icon-vk.svg" alt="vk"></a></li>
+								<li><a class="header__menu-social-link" href="./"><img src="./assets/icons/icon-telegram.svg" alt="telegram"></a></li>
+								<li><a class="header__menu-social-link" href="./"><img src="./assets/icons/icon-instagram.svg" alt="instagram"></a></li>
+							</ul>
+							<button class="header__menu-footer-button button">Обратная связь</button>
+						</div>
+					</div>
+				</nav>
+			</div>
 		</header>
 
+		<div class="breadcramps">
+			<div class="breadcramps__container container">
+				<ul class="breadcramps__list">
+					<li><a class="breadcramps__link" href="./">Главная</a></li>
+					<li><span class="breadcramps__text">Ошибка 404</span></li>
+				</ul>
+			</div>
+		</div>
+
 		<main class="main">
-			<!-- Page main content -->
+			<section class="not-found">
+				<div class="not-found__container container">
+					<div class="not-found__col">
+						<img class="not-found__img" src="./assets/images/404.png" alt="">
+					</div>
+					<div class="not-found__col">
+						<img class="not-found__label" src="./assets/images/label-not-found.svg" alt="Упс, такой страницы не существует или у вас есть проблемы с интернетом">
+						<a href="./" class="not-found__button button">Вернуться на главную</a>
+					</div>
+				</div>
+			</section>
 		</main>
 
 		<footer class="footer">
-			<!-- Page footer content -->
+			<div class="footer__container container">
+				<div class="footer__head">
+					<div class="footer__logo">
+						<a class="footer__logo-link" href="./"><img class="footer__logo-icon" src="./assets/images/logo-nakarte.svg" alt="Nakarte"></a>
+					</div>
+					<div class="footer__text">Nakarte LLC-FZ</div>
+				</div>
+				<div class="footer__body">
+					<div class="footer__item">
+						<p class="footer__label">Adress:</p>
+						<address class="footer__address">Business Center 1, M Floor, The Meydan Hotel, Nad Al Sheba, Dubai, U.A.E</address>
+					</div>
+					<div class="footer__item">
+						<p class="footer__label">Города присутствия:</p>
+						<address class="footer__address">Санкт-Петербург (Головной офис), Москва, Дубай</address>
+					</div>
+				</div>
+			</div>
 		</footer>
 	</div>
 

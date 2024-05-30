@@ -25,7 +25,7 @@ const config = {
 
 // Task handle styles
 function handleStyles() {
-	const outputDir = `${config.sourceDir}/assets/styles`;
+	const outputDir = `${config.outputDir}/assets/styles`;
 	const sourceDir = `${config.sourceDir}/assets/styles`;
 
 	const autoprefixerConfig = {
@@ -43,7 +43,7 @@ function handleStyles() {
 	const postcssConfig = [postcssPresetEnv(postcssPreset), autoprefixer(autoprefixerConfig)];
 
 	return gulp
-		.src([`${sourceDir}/**/*.css`, `!${sourceDir}/**/*.min.css`], { sourcemaps: config.mode.isDev })
+		.src([`${sourceDir}/**/*.css`, `!**/*.min.css`], { sourcemaps: config.mode.isDev })
 		.pipe(postcss(postcssConfig))
 		.pipe(gulp.dest(`${outputDir}/`))
 		.pipe(rename({ suffix: '.min' }))
@@ -74,16 +74,12 @@ function handleScripts() {
 		mangle: false,
 	};
 
-	const renameConfig = {
-		suffix: '.min',
-	};
-
 	return gulp
-		.src([`${sourceDir}/**/*.js`, `!${sourceDir}/**/*.min.js`], { sourcemaps: config.mode.isDev })
+		.src([`${sourceDir}/**/*.js`, `!**/*.min.js`], { sourcemaps: config.mode.isDev })
 		.pipe(babel(babelConfig))
 		.pipe(gulp.dest(`${outputDir}/`))
 		.pipe(terser(terserConfig))
-		.pipe(rename(renameConfig))
+		.pipe(rename({ suffix: '.min' }))
 		.pipe(gulp.dest(`${config.mode.isProd ? outputDir : sourceDir}/`, { sourcemaps: true }))
 		.pipe(sync.stream());
 }
@@ -116,17 +112,10 @@ function runClean(out) {
 
 // Task run watcher
 function runWatcher() {
-	gulp
-		.watch([`${config.sourceDir}/**/*.*`, `!${config.sourceDir}/assets/{styles,scripts}/**/*.*`])
-		.on('change', sync.reload);
+	gulp.watch([`${config.sourceDir}/**/*.*`, `!**/{styles,scripts}/**/*.*`]).on('change', sync.reload);
 
-	gulp
-		.watch([`${config.sourceDir}/assets/styles/**/*.css`, `!${config.sourceDir}/assets/styles/**/*.min.css`])
-		.on('change', handleStyles);
-
-	gulp
-		.watch([`${config.sourceDir}/assets/scripts/**/*.js`, `!${config.sourceDir}/assets/scripts/**/*.min.js`])
-		.on('change', handleScripts);
+	gulp.watch([`${config.sourceDir}/assets/styles/**/*.css`, `!**/*.min.css`], handleStyles);
+	gulp.watch([`${config.sourceDir}/assets/scripts/**/*.js`, `!**/*.min.js`], handleScripts);
 }
 
 // Task run server

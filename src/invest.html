@@ -25,6 +25,7 @@
 	<link rel="manifest" href="./site.webmanifest">
 
 	<!-- Page styles -->
+	<link rel="stylesheet" href="./assets/styles/slimselect.min.css">
 	<link rel="stylesheet" href="./assets/styles/font.min.css">
 	<link rel="stylesheet" href="./assets/styles/main.min.css">
 </head>
@@ -32,19 +33,134 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			<!-- Page header content -->
+			<div class="header__container container">
+				<div class="header__logo">
+					<a class="header__logo-link" href="./"><img class="header__logo-icon" src="./assets/images/logo-nakarte.svg" alt="Nakarte"></a>
+				</div>
+				<nav class="header__menu js-menu">
+					<button class="header__menu-burger js-menu-trigger">
+						<span></span>
+						<span></span>
+					</button>
+					<div class="header__menu-body js-menu-wrapper">
+						<ul class="header__menu-nav-list">
+							<li><a class="header__menu-nav-link" href="./about.html">О компании</a></li>
+							<li><a class="header__menu-nav-link" href="./invest.html">Для инвесторов</a></li>
+							<li><a class="header__menu-nav-link" href="./">Для проектов</a></li>
+							<li><a class="header__menu-nav-link" href="./">Контакты</a></li>
+						</ul>
+						<div class="header__menu-footer">
+							<ul class="header__menu-social-list">
+								<li><a class="header__menu-social-link" href="./"><img src="./assets/icons/icon-vk.svg" alt="vk"></a></li>
+								<li><a class="header__menu-social-link" href="./"><img src="./assets/icons/icon-telegram.svg" alt="telegram"></a></li>
+								<li><a class="header__menu-social-link" href="./"><img src="./assets/icons/icon-instagram.svg" alt="instagram"></a></li>
+							</ul>
+							<button class="header__menu-footer-button button">Обратная связь</button>
+						</div>
+					</div>
+				</nav>
+			</div>
 		</header>
 
+		<div class="breadcramps">
+			<div class="breadcramps__container container">
+				<ul class="breadcramps__list">
+					<li><a class="breadcramps__link" href="./">Главная</a></li>
+					<li><span class="breadcramps__text">Для инвесторов</span></li>
+				</ul>
+			</div>
+		</div>
+
 		<main class="main">
-			<!-- Page main content -->
+			<section class="invest">
+				<div class="invest__container container">
+					<div class="invest__head">
+						<h1 class="invest__title title"><strong>Для инвесторов</strong></h1>
+						<img class="invest__label" src="./assets/images/label-invest.svg" alt="Вся представленная вами информация конфедециальная и не предоставляется 3 лицам">
+						<p class="invest__text">Чем больше информации будет предоставлено, тем более релевантные предложения будут вам поступать</p>
+					</div>
+					<form class="invest__form" action="#">
+						<div class="input js-input">
+							<input class="input__field" id="invest-bio" type="text" />
+							<label class="input__label" for="invest-bio">ФИО инвестора, представителя инвестора:</label>
+						</div>
+						<div class="input js-input">
+							<input class="input__field" id="invest-contact" type="text" />
+							<label class="input__label" for="invest-contact">Контактная информация (Телефон, Email, Telegram):</label>
+						</div>
+
+						<div class="select">
+							<select class="select__field">
+								<option data-placeholder="true">Размер инвестиций (минимальный и максимальный)</option>
+								<option value="min">Минимальный</option>
+								<option value="max">Максимальный</option>
+							</select>
+						</div>
+
+						<div class="input js-input">
+							<textarea class="input__field" id="invest-experience" rows="5"></textarea>
+							<label class="input__label" for="invest-experience">Опыт инвестирования:</label>
+						</div>
+						<div class="input js-input">
+							<input class="input__field" id="invest-time" type="text" />
+							<label class="input__label" for="invest-time">Сроки инвестирования (краткосрочные, среднесрочные, долгосрочные):</label>
+						</div>
+						<div class="input js-input">
+							<input class="input__field" id="invest-media" type="text" />
+							<label class="input__label" for="invest-media">Информация о имеющихся проектах если есть (СМИ, интернет, рекомендации):</label>
+						</div>
+						<div class="input js-input">
+							<input class="input__field" id="invest-criteria" type="text" />
+							<label class="input__label" for="invest-criteria">Приоритетные критерии при выборе проекта (доходность, риски, сроки окупаемости):</label>
+						</div>
+						<div class="input js-input">
+							<input class="input__field" id="invest-work-experience" type="text" />
+							<label class="input__label" for="invest-work-experience">Наличие опыта работы с проектами в интересующей отрасли:</label>
+						</div>
+						<div class="input js-input">
+							<input class="input__field" id="invest-control" type="text" />
+							<label class="input__label" for="invest-control">Готовность к участию в управлении проектом:</label>
+						</div>
+						<div class="input js-input">
+							<textarea class="input__field" id="invest-comment" rows="5"></textarea>
+							<label class="input__label" for="invest-comment">Свободная форма для вашего комментария:</label>
+						</div>
+						<div class="checkbox">
+							<input type="checkbox" id="invest-consent-to-processing">
+							<label for="invest-consent-to-processing">
+								Соглашаюсь на обработку своих персональных данных как без использования средств автоматизации, так и с их использованием
+							</label>
+						</div>
+						<button class="button" type="submit">Отправить заполненные данные</button>
+					</form>
+				</div>
+			</section>
 		</main>
 
 		<footer class="footer">
-			<!-- Page footer content -->
+			<div class="footer__container container">
+				<div class="footer__head">
+					<div class="footer__logo">
+						<a class="footer__logo-link" href="./"><img class="footer__logo-icon" src="./assets/images/logo-nakarte.svg" alt="Nakarte"></a>
+					</div>
+					<div class="footer__text">Nakarte LLC-FZ</div>
+				</div>
+				<div class="footer__body">
+					<div class="footer__item">
+						<p class="footer__label">Adress:</p>
+						<address class="footer__address">Business Center 1, M Floor, The Meydan Hotel, Nad Al Sheba, Dubai, U.A.E</address>
+					</div>
+					<div class="footer__item">
+						<p class="footer__label">Города присутствия:</p>
+						<address class="footer__address">Санкт-Петербург (Головной офис), Москва, Дубай</address>
+					</div>
+				</div>
+			</div>
 		</footer>
 	</div>
 
 	<!-- Page scripts -->
+	<script src="./assets/scripts/slimselect.min.js"></script>
 	<script src="./assets/scripts/main.min.js"></script>
 </body>
 
