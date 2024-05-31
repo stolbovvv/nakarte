@@ -503,17 +503,6 @@ textarea {
 	max-width: none;
 }
 
-/* СТАРАЯ АНИМАЦИЯ КАРТЫ */
-
-/* .main__bg path {
-	fill: #1c1c1c;
-	transition: all 0.4s ease 0s;
-}
-
-.main__bg path:hover {
-	fill: var(--clr-accent-a1);
-} */
-
 .header {
 	position: absolute;
 	width: 100%;
@@ -1612,10 +1601,10 @@ textarea {
 .anim-button::after {
 	content: "";
 	position: absolute;
-	top: -4px;
-	right: -4px;
-	bottom: -4px;
-	left: -4px;
+	top: -2px;
+	right: -2px;
+	bottom: -2px;
+	left: -2px;
 	border-radius: inherit;
 	background-image: conic-gradient(
 		from 0turn at 50% 50%,
