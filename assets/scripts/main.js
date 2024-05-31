@@ -150,16 +150,18 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   const svgMapBody = document.querySelector('.main__bg');
   const svgMapPath = document.querySelectorAll('.main__bg path');
-  svgMapPath.forEach(svgPath => {
-    const mapAnimataion = gsap.to(svgPath, {
-      filter: 'drop-shadow(0px 4px 20px rgba(255,255,220,0.5))',
-      duration: 0.2,
-      paused: true
+  if (svgMapBody) {
+    svgMapPath.forEach(svgPath => {
+      const mapAnimataion = gsap.to(svgPath, {
+        filter: 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))',
+        duration: 0.2,
+        paused: true
+      });
+      svgPath.addEventListener('mouseenter', () => {
+        svgMapBody.append(svgPath);
+        mapAnimataion.play();
+      });
+      svgPath.addEventListener('mouseleave', () => mapAnimataion.reverse());
     });
-    svgPath.addEventListener('mouseenter', () => {
-      svgMapBody.append(svgPath);
-      mapAnimataion.play();
-    });
-    svgPath.addEventListener('mouseleave', () => mapAnimataion.reverse());
-  });
+  }
 });
