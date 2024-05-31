@@ -11,6 +11,7 @@ class Menu {
     if (this.menuRoot) {
       this.menuWrapper = this.menuRoot.querySelector('.js-menu-wrapper');
       this.menuTrigger = this.menuRoot.querySelector('.js-menu-trigger');
+      this.linkTrigger = this.menuTrigger.querySelectorAll('.js-menu-trigger a');
       this.options = {
         activeClass: activeClass || 'is-active'
       };
@@ -36,6 +37,12 @@ class Menu {
   }
   init() {
     this.menuTrigger.addEventListener('click', () => this.toggle());
+    this.linkTrigger.forEach(link => {
+      link.addEventListener('click', () => this.toggle());
+    });
+    window.addEventListener('resize', () => {
+      this.hide();
+    });
   }
 }
 window.addEventListener('DOMContentLoaded', () => {
@@ -148,9 +155,9 @@ window.addEventListener('DOMContentLoaded', () => {
     button.addEventListener('mouseenter', () => animation.play());
     button.addEventListener('mouseleave', () => animation.reverse());
   });
-  const svgMapBody = document.querySelector('.main__bg');
-  const svgMapPath = document.querySelectorAll('.main__bg path');
-  if (svgMapBody) {
+  const svgMapBody = document.querySelectorAll('.anim-map');
+  svgMapBody.forEach(map => {
+    const svgMapPath = document.querySelectorAll('.anim-map path');
     svgMapPath.forEach(svgPath => {
       const mapAnimataion = gsap.to(svgPath, {
         filter: 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))',
@@ -158,10 +165,10 @@ window.addEventListener('DOMContentLoaded', () => {
         paused: true
       });
       svgPath.addEventListener('mouseenter', () => {
-        svgMapBody.append(svgPath);
+        map.append(svgPath);
         mapAnimataion.play();
       });
       svgPath.addEventListener('mouseleave', () => mapAnimataion.reverse());
     });
-  }
+  });
 });
