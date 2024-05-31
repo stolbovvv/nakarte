@@ -874,7 +874,7 @@ textarea {
 }
 
 .hero__images > li:nth-child(3) {
-	inset: 62% auto auto 5% !important;
+	inset: 62% auto auto -2% !important;
 }
 
 .hero__images > li:nth-child(3) > img {
