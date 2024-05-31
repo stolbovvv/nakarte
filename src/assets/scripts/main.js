@@ -1,4 +1,4 @@
-/* global SlimSelect Parallax */
+/* global SlimSelect Parallax gsap */
 
 class Menu {
 	constructor(element, { activeClass } = {}) {
@@ -48,6 +48,8 @@ window.addEventListener('DOMContentLoaded', () => {
 	const customInputs = document.querySelectorAll('.js-input');
 	const customSelects = document.querySelectorAll('.select');
 	const customQuote = document.querySelectorAll('.quote');
+	const animCard = document.querySelectorAll('.anim-card');
+	const animButton = document.querySelectorAll('.anim-button');
 
 	if (heroParallax) new Parallax(heroParallax, { pointerEvents: true });
 
@@ -102,4 +104,80 @@ window.addEventListener('DOMContentLoaded', () => {
 	});
 
 	new Menu('.js-menu');
+
+	gsap.to('.anim-button', {
+		'--turn': '1turn',
+		ease: 'none',
+		duration: 3,
+		repeat: -1,
+	});
+
+	gsap.to('.anim-card_turn-01', {
+		'--turn': '1.1turn',
+		ease: 'none',
+		duration: 20,
+		repeat: -1,
+	});
+
+	gsap.to('.anim-card_turn-03', {
+		'--turn': '1.3turn',
+		ease: 'none',
+		duration: 19.5,
+		repeat: -1,
+	});
+
+	gsap.to('.anim-card_turn-05', {
+		'--turn': '1.5turn',
+		ease: 'none',
+		duration: 19,
+		repeat: -1,
+	});
+
+	gsap.to('.anim-card_turn-07', {
+		'--turn': '1.7turn',
+		ease: 'none',
+		duration: 18.5,
+		repeat: -1,
+	});
+
+	animCard.forEach((card) => {
+		const animation = gsap.to(card, {
+			'--width': '0%',
+			ease: 'none',
+			duration: 0.5,
+			paused: true,
+		});
+
+		card.addEventListener('mouseenter', () => animation.play());
+		card.addEventListener('mouseleave', () => animation.reverse());
+	});
+
+	animButton.forEach((button) => {
+		const animation = gsap.to(button, {
+			'--width': '0%',
+			ease: 'none',
+			duration: 0.5,
+			paused: true,
+		});
+
+		button.addEventListener('mouseenter', () => animation.play());
+		button.addEventListener('mouseleave', () => animation.reverse());
+	});
+
+	const svgMapBody = document.querySelector('.main__bg');
+	const svgMapPath = document.querySelectorAll('.main__bg path');
+
+	svgMapPath.forEach((svgPath) => {
+		const mapAnimataion = gsap.to(svgPath, {
+			filter: 'drop-shadow(0px 4px 20px rgba(255,255,220,0.5))',
+			duration: 0.2,
+			paused: true,
+		});
+
+		svgPath.addEventListener('mouseenter', () => {
+			svgMapBody.append(svgPath);
+			mapAnimataion.play();
+		});
+		svgPath.addEventListener('mouseleave', () => mapAnimataion.reverse());
+	});
 });

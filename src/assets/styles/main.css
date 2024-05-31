@@ -133,7 +133,7 @@ strong {
 
 .button_dark:hover,
 .button_dark:active {
-	color: var(--clr-light-1);
+	background-color: var(--clr-dark-3);
 }
 
 a.button_dark {
@@ -315,25 +315,6 @@ textarea {
 	z-index: 10;
 }
 
-.card::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	border-radius: inherit;
-	background-color: inherit;
-	z-index: -1;
-}
-
-.card::before {
-	content: "";
-	border-radius: inherit;
-	position: absolute;
-	inset: -2px;
-	z-index: -2;
-	background: conic-gradient(from 12turn, transparent 25%, var(--clr-accent-1), 99%, transparent);
-	background-position: center center;
-}
-
 .card__img {
 	max-width: 10rem;
 }
@@ -483,14 +464,16 @@ textarea {
 	max-width: none;
 }
 
-.main__bg path {
+/* СТАРАЯ АНИМАЦИЯ КАРТЫ */
+
+/* .main__bg path {
 	fill: #1c1c1c;
 	transition: all 0.4s ease 0s;
 }
 
 .main__bg path:hover {
 	fill: var(--clr-accent-a1);
-}
+} */
 
 .header {
 	position: absolute;
@@ -530,6 +513,7 @@ textarea {
 }
 
 .header__menu-burger {
+	flex: 0 0 auto;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -1454,4 +1438,71 @@ textarea {
 
 *::-webkit-scrollbar-thumb:active {
 	background-color: var(--clr-accent-1);
+}
+
+/* TEST */
+
+.anim-card {
+	--width: 80%;
+
+	position: relative;
+	z-index: 0;
+}
+
+.anim-card_turn-01 {
+	--turn: 0.1turn;
+}
+
+.anim-card_turn-03 {
+	--turn: 0.3turn;
+}
+
+.anim-card_turn-05 {
+	--turn: 0.5turn;
+}
+
+.anim-card_turn-07 {
+	--turn: 0.7turn;
+}
+
+.anim-card::before {
+	content: "";
+	position: absolute;
+	border-radius: inherit;
+	inset: 0;
+	background-color: var(--clr-dark-2);
+	z-index: -1;
+}
+
+.anim-button {
+	--turn: 0turn;
+	--width: 80%;
+
+	position: relative;
+	z-index: 0;
+}
+
+.anim-button::before {
+	content: "";
+	position: absolute;
+	border-radius: inherit;
+	inset: 0;
+	background-color: var(--clr-dark-3);
+	z-index: -1;
+}
+
+.anim-card::after,
+.anim-button::after {
+	content: "";
+	position: absolute;
+	inset: -4px;
+	border-radius: inherit;
+	background-image: conic-gradient(
+		from var(--turn, 0turn) at 50% 50%,
+		transparent 0%,
+		transparent var(--width, 80%),
+		var(--clr-accent-1) var(--width, 80%),
+		var(--clr-accent-1) 100%
+	);
+	z-index: -5;
 }
