@@ -1278,7 +1278,10 @@ textarea {
 }
 
 .about__img {
-	z-index: -1;
+	z-index: 0;
+	width: 100%;
+	margin-bottom: -20%;
+	height: auto;
 }
 
 @media screen and (width >= 48em) {
@@ -1299,9 +1302,11 @@ textarea {
 	}
 
 	.about__img {
-		position: relative;
 		width: 1000px;
+		height: auto;
+		object-fit: cover;
 		max-width: none;
+		margin-bottom: 0;
 	}
 }
 
