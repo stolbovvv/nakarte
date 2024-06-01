@@ -544,6 +544,7 @@ textarea {
 }
 
 .header__menu-burger {
+	position: relative;
 	flex: 0 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -552,10 +553,11 @@ textarea {
 	border: none;
 	width: 2.25rem;
 	height: 0.75rem;
+	margin: 0;
+	padding: 0;
 	background: none;
-	position: relative;
-	z-index: 1000;
 	transition: all 0.2s ease 0s;
+	z-index: 1000;
 }
 
 .header__menu-burger.is-active {
@@ -1583,8 +1585,8 @@ textarea {
 }
 
 .anim-button {
-	--turn: 0turn;
-	--width: 80%;
+	--turn: 0.2turn;
+	--width: 0%;
 
 	position: relative;
 	z-index: 0;
@@ -1612,6 +1614,10 @@ textarea {
 	bottom: -2px;
 	left: -2px;
 	border-radius: inherit;
+	z-index: -5;
+}
+
+.anim-card::after {
 	background-image: conic-gradient(
 		from 0turn at 50% 50%,
 		transparent 0%,
@@ -1626,5 +1632,19 @@ textarea {
 		var(--clr-accent-1) var(--width, 80%),
 		var(--clr-accent-1) 100%
 	);
-	z-index: -5;
+}
+
+.anim-button::after {
+	background-image: conic-gradient(
+		from 0turn at 50% 50%,
+		hsl(227deg, 100%, 67%) 0%,
+		transparent 0%,
+		transparent 100%
+	);
+	background-image: conic-gradient(
+		from var(--turn, 0turn) at 50% 50%,
+		var(--clr-accent-1) var(--width, 0%),
+		transparent var(--width, 0%),
+		transparent 100%
+	);
 }

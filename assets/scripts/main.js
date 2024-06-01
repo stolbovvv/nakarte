@@ -52,6 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const customQuote = document.querySelectorAll('.quote');
   const animCard = document.querySelectorAll('.anim-card');
   const animButton = document.querySelectorAll('.anim-button');
+  const svgMapBody = document.querySelectorAll('.anim-map');
   if (heroParallax) new Parallax(heroParallax, {
     pointerEvents: true
   });
@@ -105,11 +106,15 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
   new Menu('.js-menu');
-  gsap.to('.anim-button', {
-    '--turn': '1turn',
-    ease: 'none',
-    duration: 3,
-    repeat: -1
+  animCard.forEach(card => {
+    const animation = gsap.to(card, {
+      '--width': '100%',
+      ease: 'none',
+      duration: 0.5,
+      paused: true
+    });
+    card.addEventListener('mouseenter', () => animation.play());
+    card.addEventListener('mouseleave', () => animation.reverse());
   });
   gsap.to('.anim-card_turn-01', {
     '--turn': '1.1turn',
@@ -135,27 +140,16 @@ window.addEventListener('DOMContentLoaded', () => {
     duration: 18.5,
     repeat: -1
   });
-  animCard.forEach(card => {
-    const animation = gsap.to(card, {
-      '--width': '0%',
-      ease: 'none',
-      duration: 0.5,
-      paused: true
-    });
-    card.addEventListener('mouseenter', () => animation.play());
-    card.addEventListener('mouseleave', () => animation.reverse());
-  });
   animButton.forEach(button => {
     const animation = gsap.to(button, {
-      '--width': '0%',
+      '--width': '100%',
       ease: 'none',
-      duration: 0.5,
+      duration: 0.2,
       paused: true
     });
     button.addEventListener('mouseenter', () => animation.play());
     button.addEventListener('mouseleave', () => animation.reverse());
   });
-  const svgMapBody = document.querySelectorAll('.anim-map');
   svgMapBody.forEach(map => {
     const svgMapPath = document.querySelectorAll('.anim-map path');
     svgMapPath.forEach(svgPath => {
