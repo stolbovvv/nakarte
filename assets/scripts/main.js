@@ -108,7 +108,7 @@ window.addEventListener('DOMContentLoaded', () => {
   new Menu('.js-menu');
   animCard.forEach(card => {
     const animation = gsap.to(card, {
-      '--width': '100%',
+      '--width': '0%',
       ease: 'none',
       duration: 0.5,
       paused: true
