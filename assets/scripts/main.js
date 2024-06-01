@@ -152,6 +152,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   svgMapBody.forEach(map => {
     const svgMapPath = document.querySelectorAll('.anim-map path');
+    const autoAnim = document.querySelectorAll('.anim-map path[data-map-anim]');
+    const autoAnimArr = [];
     svgMapPath.forEach(svgPath => {
       const mapAnimataion = gsap.to(svgPath, {
         filter: 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))',
@@ -160,9 +162,44 @@ window.addEventListener('DOMContentLoaded', () => {
       });
       svgPath.addEventListener('mouseenter', () => {
         map.append(svgPath);
+        // autoAnimArr.forEach((anim) => anim.pause());
         mapAnimataion.play();
       });
-      svgPath.addEventListener('mouseleave', () => mapAnimataion.reverse());
+      svgPath.addEventListener('mouseleave', () => {
+        // autoAnimArr.forEach((anim) => anim.play());
+        mapAnimataion.reverse();
+      });
+    });
+    autoAnim.forEach((item, index, arr) => {
+      autoAnimArr[index] = gsap.to(item, {
+        keyframes: {
+          filter: ['drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.0))', 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))', 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))', 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))', 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.0))']
+        },
+        duration: 3,
+        repeat: -1,
+        repeatDelay: arr.length * 3,
+        delay: index * 3,
+        onStart: () => map.append(item),
+        onRepeat: () => map.append(item)
+      });
     });
   });
+
+  // gsap.to('[data-map-anim]', {
+  // 	keyframes: {
+  // 		filter: [
+  // 			'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.0))',
+  // 			'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))',
+  // 			'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))',
+  // 			'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.0))',
+  // 		],
+  // 	},
+  // 	duration: 3,
+  // 	stagger: 3,
+  // 	repeat: -1,
+  // 	delay: 0,
+  // 	onRepeat() {
+  // 		console.log(this);
+  // 	},
+  // });
 });
