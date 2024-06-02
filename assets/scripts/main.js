@@ -154,6 +154,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const svgMapPath = document.querySelectorAll('.anim-map path');
     const autoAnim = document.querySelectorAll('.anim-map path[data-map-anim]');
     const autoAnimArr = [];
+    const autoAnumDuration = 1.5;
     svgMapPath.forEach(svgPath => {
       const mapAnimataion = gsap.to(svgPath, {
         filter: 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))',
@@ -162,11 +163,9 @@ window.addEventListener('DOMContentLoaded', () => {
       });
       svgPath.addEventListener('mouseenter', () => {
         map.append(svgPath);
-        // autoAnimArr.forEach((anim) => anim.pause());
         mapAnimataion.play();
       });
       svgPath.addEventListener('mouseleave', () => {
-        // autoAnimArr.forEach((anim) => anim.play());
         mapAnimataion.reverse();
       });
     });
@@ -175,10 +174,10 @@ window.addEventListener('DOMContentLoaded', () => {
         keyframes: {
           filter: ['drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.0))', 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))', 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))', 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))', 'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.0))']
         },
-        duration: 3,
+        duration: autoAnumDuration,
         repeat: -1,
-        repeatDelay: arr.length * 3,
-        delay: index * 3,
+        repeatDelay: arr.length * autoAnumDuration,
+        delay: index * autoAnumDuration,
         onStart: () => map.append(item),
         onRepeat: () => map.append(item)
       });
