@@ -45,6 +45,47 @@ class Menu {
     });
   }
 }
+class StickyHeader {
+  constructor(header) {
+    let {
+      activeClass
+    } = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    this.headerRoot = typeof header === 'string' ? document.querySelector(header) : header;
+    if (this.headerRoot) {
+      this.scrollTop = document.documentElement.scrollTop;
+      this.options = {
+        activeClass: activeClass || 'is-active'
+      };
+      this.init();
+    }
+  }
+  init() {
+    this.headerRoot.style['maxWidth'] = `${document.body.clientWidth}px`;
+    window.addEventListener('resize', () => {
+      this.headerRoot.style['maxWidth'] = `${document.body.clientWidth}px`;
+    });
+    window.addEventListener('scroll', () => {
+      const {
+        scrollTop
+      } = document.documentElement;
+      const {
+        offsetHeight
+      } = this.headerRoot;
+      if (scrollTop > 10) {
+        this.headerRoot.style['background-color'] = `var(--clr-dark-4)`;
+      } else {
+        this.headerRoot.style['background-color'] = `transparent`;
+      }
+      if (this.scrollTop < scrollTop && scrollTop > offsetHeight) {
+        this.headerRoot.style['transform'] = `translateY(-100%)`;
+      }
+      if (this.scrollTop > scrollTop && scrollTop > offsetHeight) {
+        this.headerRoot.style['transform'] = `translateY(0%)`;
+      }
+      this.scrollTop = scrollTop;
+    });
+  }
+}
 window.addEventListener('DOMContentLoaded', () => {
   const heroParallax = document.querySelector('#hero-parallax');
   const customInputs = document.querySelectorAll('.js-input');
@@ -183,22 +224,5 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
-
-  // gsap.to('[data-map-anim]', {
-  // 	keyframes: {
-  // 		filter: [
-  // 			'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.0))',
-  // 			'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))',
-  // 			'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.2))',
-  // 			'drop-shadow(0px 4px 20px rgba(0, 255, 209, 0.0))',
-  // 		],
-  // 	},
-  // 	duration: 3,
-  // 	stagger: 3,
-  // 	repeat: -1,
-  // 	delay: 0,
-  // 	onRepeat() {
-  // 		console.log(this);
-  // 	},
-  // });
+  new StickyHeader('.header');
 });
